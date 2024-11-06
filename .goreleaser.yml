@@ -1,3 +1,5 @@
+version: 2
+
 before:
   hooks:
     - go mod download
@@ -27,10 +29,10 @@ dockers:
   - goos: linux
     goarch: amd64
     image_templates:
-      - seznam/slo-exporter:{{ .Tag }}-amd64
-      - seznam/slo-exporter:v{{ .Major }}.{{ .Minor }}-amd64
-      - seznam/slo-exporter:v{{ .Major }}-amd64
-      - seznam/slo-exporter:latest-amd64
+      - mohammedalics/slo-exporter:{{ .Tag }}-amd64
+      - mohammedalics/slo-exporter:v{{ .Major }}.{{ .Minor }}-amd64
+      - mohammedalics/slo-exporter:v{{ .Major }}-amd64
+      - mohammedalics/slo-exporter:latest-amd64
     use: buildx
     build_flag_templates:
       - --pull
@@ -49,10 +51,10 @@ dockers:
   - goos: linux
     goarch: arm64
     image_templates:
-      - seznam/slo-exporter:{{ .Tag }}-arm64
-      - seznam/slo-exporter:v{{ .Major }}.{{ .Minor }}-arm64
-      - seznam/slo-exporter:v{{ .Major }}-arm64
-      - seznam/slo-exporter:latest-arm64
+      - mohammedalics/slo-exporter:{{ .Tag }}-arm64
+      - mohammedalics/slo-exporter:v{{ .Major }}.{{ .Minor }}-arm64
+      - mohammedalics/slo-exporter:v{{ .Major }}-arm64
+      - mohammedalics/slo-exporter:latest-arm64
     use: buildx
     build_flag_templates:
       - --pull
@@ -69,19 +71,19 @@ dockers:
       - --label=org.opencontainers.image.documentation={{.GitURL}}
       - "--platform=linux/arm64"
 docker_manifests:
-  - name_template: "seznam/slo-exporter:{{ .Tag }}"
+  - name_template: "mohammedalics/slo-exporter:{{ .Tag }}"
     image_templates:
-      - "seznam/slo-exporter:{{ .Tag }}-amd64"
-      - "seznam/slo-exporter:{{ .Tag }}-arm64"
-  - name_template: "seznam/slo-exporter:v{{ .Major }}.{{ .Minor }}"
+      - "mohammedalics/slo-exporter:{{ .Tag }}-amd64"
+      - "mohammedalics/slo-exporter:{{ .Tag }}-arm64"
+  - name_template: "mohammedalics/slo-exporter:v{{ .Major }}.{{ .Minor }}"
     image_templates:
-      - "seznam/slo-exporter:v{{ .Major }}.{{ .Minor }}-amd64"
-      - "seznam/slo-exporter:v{{ .Major }}.{{ .Minor }}-arm64"
-  - name_template: "seznam/slo-exporter:v{{ .Major }}"
+      - "mohammedalics/slo-exporter:v{{ .Major }}.{{ .Minor }}-amd64"
+      - "mohammedalics/slo-exporter:v{{ .Major }}.{{ .Minor }}-arm64"
+  - name_template: "mohammedalics/slo-exporter:v{{ .Major }}"
     image_templates:
-      - "seznam/slo-exporter:v{{ .Major }}-amd64"
-      - "seznam/slo-exporter:v{{ .Major }}-arm64"
-  - name_template: "seznam/slo-exporter:latest"
+      - "mohammedalics/slo-exporter:v{{ .Major }}-amd64"
+      - "mohammedalics/slo-exporter:v{{ .Major }}-arm64"
+  - name_template: "mohammedalics/slo-exporter:latest"
     image_templates:
-      - "seznam/slo-exporter:latest-amd64"
-      - "seznam/slo-exporter:latest-arm64"
+      - "mohammedalics/slo-exporter:latest-amd64"
+      - "mohammedalics/slo-exporter:latest-arm64"
