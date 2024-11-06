@@ -6,3 +6,4 @@ tmp
 
 **/*.pos
 **/test_output/
+/.idea/
